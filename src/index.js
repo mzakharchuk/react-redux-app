@@ -1,23 +1,27 @@
+import "@babel/polyfill";
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route, Switch, browserHistory } from 'react-router-dom';
+import { BrowserRouter} from 'react-router-dom';
 
-import HomePage from './components/home/homePage'
-import AboutPage from './components/about/aboutPage'
+import App from './components/app'
+import './styles/styles.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-class Index extends  React.Component {
+import configureStore from './store/configureStore'
+import {Provider} from 'react-redux'
+
+const store = configureStore()
+
+class Index extends Component {
 
     render(){
-        return <div>
-            <Router>
-                <div>
-                    <Switch>
-                        <Route exact path="/" component={HomePage}/>
-                        <Route path="/about" component={AboutPage}/>
-                    </Switch>
-                </div>
-            </Router>
-        </div>
+        return( 
+            <Provider store={store}>
+                <BrowserRouter>
+                    <App/>
+                </BrowserRouter>
+        </Provider>
+        )
     }   
 }
 
