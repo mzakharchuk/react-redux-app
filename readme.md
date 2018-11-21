@@ -67,4 +67,19 @@ In component:
 this.props.actions.loadCourses()
 ```
 
+## Redirect to another page
+If you want redirect to another page you need use `withRouter`
+
+```java
+import { withRouter } from 'react-router-dom'
+```
+
+After import library in your component you can use it. If you see below it's very easy to use
+
+```javascript
+ redirectToAddCoursePage(){
+        this.props.history.push('/course')
+    }
+```    
+
 

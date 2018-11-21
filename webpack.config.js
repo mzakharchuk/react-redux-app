@@ -9,6 +9,7 @@ module.exports = {
         publicPath: '/dist/',
         filename: "bundle.js"
     },
+    devtool:"source-map",
     devServer: {
         historyApiFallback: true,
         contentBase: './dist'

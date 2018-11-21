@@ -11,3 +11,9 @@
 - creare store and `combineReducers`
 - using redux in course page
 - include bootstrap 4
+
+>Day 3 (21.11.2018)
+- add redux-thunk (async library)
+- add mock data for courses and author
+- update reducer and actions
+- send patemeters
