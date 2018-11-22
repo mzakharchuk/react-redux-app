@@ -20,5 +20,6 @@
 
 > Day 4 (22.11.2018)
 - add populate form in mapStateToProps
--update state with `componentWillReceiveProps`
+- update state with `componentWillReceiveProps`
 - add `toastr` for display notification and error handing
+- add unit tests with `mocha`,`enzime` and `expect`

@@ -32,8 +32,6 @@ function mapStateToProps(state){
 } 
 ```
 
-
-
 ### 3 ways to handle `mapDispatchToProps`
 
 1. Ignore it. Use dispatch
@@ -110,3 +108,26 @@ export default class Form extends React.Component {
 }    
 ```    
 
+## Unit test
+For write unit test I've chosen 
+- mocha
+- Enzyme
+- expect
+
+first you need Helper files
+So let’s create the `src/test/helpers/browser.js` file, and include the following:
+```javascript
+import  expect  from 'expect';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+import { mount, render, shallow } from 'enzyme';
+
+configure({ adapter: new Adapter() });
+
+global.expect = expect;
+
+global.mount = mount;
+global.render = render;
+global.shallow = shallow;    
+```   
