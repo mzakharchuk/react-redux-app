@@ -4,18 +4,25 @@ import * as courseActions from '../../_actions/courseActions'
 import {bindActionCreators} from 'redux'
 import { withRouter } from 'react-router-dom'
 import CourseForm from './CourseForm'
-
+import toastr from 'toastr'
 
 class ManageCoursePage extends Component {
     constructor(props,context){
         super(props,context)
 
         this.state = {
-            course: Object.assign({},this.props.course),
+            course: {...this.props.course},
             errors: {},
+            saving: false
         }
         this.onChangeHandler = this.onChangeHandler.bind(this)
         this.onSaveHandler = this.onSaveHandler.bind(this)
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(this.state.course.id !== nextProps.course.id){
+            this.setState({course:{...nextProps.course}})
+        }
     }
 
     onChangeHandler(e){
@@ -27,7 +34,17 @@ class ManageCoursePage extends Component {
 
     onSaveHandler(e){
         e.preventDefault()
+        this.setState({saving:true})
         this.props.actions.saveCourse(this.state.course)
+        .then(() => this.redirect())
+        .catch(error =>{
+            toastr.error(error)
+            this.setState({saving:false})
+        })
+    }
+    redirect(){
+        this.setState({saving:false})
+        toastr.success("Course saving")
         this.props.history.push('/courses')
     }
 
@@ -39,6 +56,7 @@ class ManageCoursePage extends Component {
                 course={this.state.course}
                 allAuthors={this.props.authors}
                 onChange={this.onChangeHandler}
+                saving={this.state.saving}
                 onSave={this.onSaveHandler}
                 error={this.state.errors}
                 />
@@ -49,14 +67,13 @@ class ManageCoursePage extends Component {
 
 function getCourseById(courses,id){
     const course = courses.filter(x => x.id===id)
-    if(course) 
+    if(course.length > 0) 
         return course[0]
     else
         return { id:'',watchHref:'',authorId:'',category:'',length:'',title:''}
 }
 
 function mapStateToProps(state, ownProps){
-    debugger
     const courseId = ownProps.match.params.id
 
     let transformAuthors = state.authors.map(author => {

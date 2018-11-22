@@ -2,7 +2,7 @@ import React from 'react'
 import TextInput from '../_common/TextInput'
 import SelectInput from '../_common/SelectInput'
 
-const CourseForm =({course,allAuthors,loading,onChange,onSave,error}) => {
+const CourseForm =({course,allAuthors,saving,onChange,onSave,error}) => {
     return( 
         <form>
             <TextInput
@@ -34,8 +34,8 @@ const CourseForm =({course,allAuthors,loading,onChange,onSave,error}) => {
                     error={error.length}/>        
             <input 
                 type="submit" 
-                disabled={loading}
-                value={loading?"Saving...":"Save"} 
+                disabled={saving}
+                value={saving?"Saving...":"Save"} 
                 className="btn  btn-primary"
                 onClick={onSave}/>
         </form>

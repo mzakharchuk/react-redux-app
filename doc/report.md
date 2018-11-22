@@ -17,3 +17,8 @@
 - add mock data for courses and author
 - update reducer and actions
 - send patemeters
+
+> Day 4 (22.11.2018)
+- add populate form in mapStateToProps
+-update state with `componentWillReceiveProps`
+- add `toastr` for display notification and error handing

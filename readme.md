@@ -70,7 +70,7 @@ this.props.actions.loadCourses()
 ## Redirect to another page
 If you want redirect to another page you need use `withRouter`
 
-```java
+```javascript
 import { withRouter } from 'react-router-dom'
 ```
 
@@ -82,4 +82,31 @@ After import library in your component you can use it. If you see below it's ver
     }
 ```    
 
+## Life Cycle Methods
+
+### Updating and `componentWillReceiveProps()`
+
+if you need populate your form then you refresh a page, you need use `componentWillReceiveProps`. This method is called when props are passed to the Component instance. Let's dig a little deeper into what this means.
+
+```javascript
+
+import React from 'react';
+
+export default class Form extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      course: {...this.props.course},
+    }
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(this.state.course.id !== nextProps.course.id) {
+      this.setState({course:{...nextProps.course}})
+    }
+  }
+
+}    
+```    
 

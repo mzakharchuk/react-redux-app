@@ -7,7 +7,15 @@
 }
 a.active{
   color: orange;  
+  outline: none;
 }
+.btn:focus,.btn:active:focus,.btn.active:focus,
+.btn.focus,.btn:active.focus,.btn.active.focus {
+    outline: none;
+}
+.btn:focus {
+    outline: none;
+  }
 nav{
     padding-top: 20px;
 }

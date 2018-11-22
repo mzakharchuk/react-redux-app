@@ -23,9 +23,9 @@ class App extends Component {
                     <Route path="/" exact component={HomePage}/>
                     <Route path="/about" component={AboutPage}/>
                     <Route path="/courses" component={CoursePage}/>
-                    <Route path="/course" component={ManageCoursePage}/>
+                    <Route exact path="/course" component={ManageCoursePage}/>
                     <Route path='/course/:id' component={ManageCoursePage}/>
-
+                  
                     <PrivateRoute path="/private" component={ProtectedHome}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/logout" component={Logout}/>
