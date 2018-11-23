@@ -3,7 +3,7 @@ import {ManageCoursePage} from '../../components/course/ManageCoursePage'
 
 describe('Component: Manage Course Page', function () {
   const props = {
-    course: { id:'',watchHref:'',authorId:'',category:'',length:'',title:'test'},
+    course: { id:'',authorId:'',category:'',length:'',title:'test'},
     authors:[],
     actions: {saveCourse: ()=>{return Promise.resolve()}}
   }

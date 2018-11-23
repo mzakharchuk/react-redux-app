@@ -82,7 +82,7 @@ function getCourseById(courses,id){
     if(course.length > 0) 
         return course[0]
     else
-        return { id:'',watchHref:'',authorId:'',category:'',length:'',title:''}
+        return { id:'',authorId:'',category:'',length:'',title:''}
 }
 
 function mapStateToProps(state, ownProps){

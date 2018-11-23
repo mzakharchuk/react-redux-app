@@ -4,7 +4,7 @@ import TextInput from '../../components/_common/TextInput'
 
 describe('Component: Course Form', function () {
   const props = {
-    course: { id:'',watchHref:'',authorId:'',category:'',length:'',title:'test'},
+    course: { id:'',authorId:'',category:'',length:'',title:'test'},
     allAuthors:[],
     onChange:()=>{},
     saving:false,
