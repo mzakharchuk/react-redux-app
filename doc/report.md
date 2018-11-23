@@ -27,3 +27,4 @@
 > day 5 (23.11.2018)
 - update configuration for test `enzyme`
 - add validation for form
+- configured webpack for production version
