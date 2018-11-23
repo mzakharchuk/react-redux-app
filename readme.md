@@ -131,3 +131,23 @@ global.mount = mount;
 global.render = render;
 global.shallow = shallow;    
 ```   
+And `src/test/dom.js` will have our mocked DOM:
+```javascript
+const jsdom = require('jsdom');
+const exposedProperties = ['window', 'navigator', 'document'];
+const { JSDOM } = jsdom;
+global.document = new JSDOM('');
+global.window = document.defaultView;
+
+global.navigator = {
+  userAgent: 'node.js'
+};
+```
+Our setup is now complete. We can run our tests with `npm run test` by adding these scripts to our package.json:
+
+```json
+  "scripts": {
+        "test": "mocha --compilers js:@babel/register --require ./src/test/helpers/browser.js --require ./src/test/helpers/dom.js --recursive \"./src/**/*.spec.js*\""
+        ...
+    }
+```
