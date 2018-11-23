@@ -1,8 +1,8 @@
 import React from 'react'
-import CourseForm from '../components/course/CourseForm'
-import TextInput from '../components/_common/TextInput'
+import CourseForm from '../../components/course/CourseForm'
+import TextInput from '../../components/_common/TextInput'
 
-describe('Test for CourseForm', function () {
+describe('Component: Course Form', function () {
   const props = {
     course: { id:'',watchHref:'',authorId:'',category:'',length:'',title:'test'},
     allAuthors:[],
@@ -25,4 +25,5 @@ describe('Test for CourseForm', function () {
   it('should render TextInput',() =>{
     expect(wrapper.find(TextInput).length).toBe(3)
   })
+ 
 })

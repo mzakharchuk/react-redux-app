@@ -10,27 +10,55 @@ start
   npm run start
 ```
 below you can see a bit notation about connection `React-Redux`
-
+## The react-redux Library
+React bindings are not available in Redux by default. You will need to install an extra library called react-redux first.
+```javascript
+npm install --save react-redux
+```
+The library exports just two APIs that you need to remember, a <Provider /> component and a higher-order function known as `connect()`. 
 
 ## React-Redux Connect
+The `connect()` function is used to bind React containers to Redux. What that means is that you can use the connect feature to:
+
+  -  subscribe to the store and map its state to your props
+  -  dispatch actions and map the dispatch callbacks into your props
+
+Once you've connected your application to Redux, you can use this.props to access the current state and also to dispatch actions.
+First, import `connect`
 
 ```javascript
-connect(mapStateToProps, mapDispatchToProps)
+import { connect } from 'react-redux';
 ```
-In component 
-```javascript
-connect(mapStateToProps, mapDispatchToProps)(HomePage)
-```
+Second, create two methods: mapStateToProps and mapDispatchToProps.
+With react-redux.connect we can connect our redux store to a component:
 
-
-###  handle `mapStateToProps`
 ```javascript
 function mapStateToProps(state){
-  return {
-      appState: state
+    let transformAuthors = state.authors.map(author => {
+        return {
+            value: author.id,
+            text: author.firstName + ' '+ author.lastName
+        }
+    })
+    return{
+        authors: transformAuthors
     }
-} 
+}
+
+function mapDispatchToProps(dispatch){
+    return{
+        actions: bindActionCreators(courseActions,dispatch)
+      }
+}
 ```
+mapStateToProps receives the state of the store as an argument. It returns an object that describes how the state of the store is mapped into your props. mapDispatchToProps returns a similar object that describes how the dispatch actions are mapped to your props. 
+
+Finally, we use connect to bind the AddContact component to the two functions as follows:
+```javascript
+connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage)
+```
+
+>Note: `mapDispatchToProps` function we can use 3 ways
 
 ### 3 ways to handle `mapDispatchToProps`
 
@@ -134,20 +162,33 @@ global.shallow = shallow;
 And `src/test/dom.js` will have our mocked DOM:
 ```javascript
 const jsdom = require('jsdom');
-const exposedProperties = ['window', 'navigator', 'document'];
 const { JSDOM } = jsdom;
-global.document = new JSDOM('');
-global.window = document.defaultView;
 
-global.navigator = {
-  userAgent: 'node.js'
-};
+function setUpDomEnvironment() {
+  const dom = new JSDOM('<!doctype html><html><body></body></html>');
+  const { window } = dom;
+
+  global.window = window;
+  global.document = window.document;
+  global.navigator = {
+      userAgent: 'node.js',
+  };
+  copyProps(window, global);
+}
+
+function copyProps(src, target) {
+  const props = Object.getOwnPropertyNames(src)
+      .filter(prop => typeof target[prop] === 'undefined')
+      .map(prop => Object.getOwnPropertyDescriptor(src, prop));
+  Object.defineProperties(target, props);
+}
+
+setUpDomEnvironment();
 ```
 Our setup is now complete. We can run our tests with `npm run test` by adding these scripts to our package.json:
 
 ```json
   "scripts": {
-        "test": "mocha --compilers js:@babel/register --require ./src/test/helpers/browser.js --require ./src/test/helpers/dom.js --recursive \"./src/**/*.spec.js*\""
-        ...
+        "test": "mocha --compilers js:@babel/register --require ./src/test/helpers/browser.js --require ./src/test/helpers/dom.js --recursive \"./src/test/**/*.spec.js*\""
     }
 ```

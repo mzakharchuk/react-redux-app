@@ -6,7 +6,7 @@
         "prestart": "webpack --mode development",
         "start": "webpack-dev-server --hot --open --mode development ",
         "build": "webpack --mode production",
-        "test": "mocha --compilers js:@babel/register --require ./src/test/helpers/browser.js --require ./src/test/helpers/dom.js --recursive \"./src/**/*.spec.js*\""
+        "test": "mocha --compilers js:@babel/register --require ./src/test/helpers/browser.js --require ./src/test/helpers/dom.js --recursive \"./src/test/**/*.spec.js*\""
     },
     "dependencies": {
         "@babel/polyfill": "^7.0.0",

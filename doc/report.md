@@ -23,3 +23,7 @@
 - update state with `componentWillReceiveProps`
 - add `toastr` for display notification and error handing
 - add unit tests with `mocha`,`enzime` and `expect`
+
+> day 5 (23.11.2018)
+- update configuration for test `enzyme`
+- add validation for form

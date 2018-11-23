@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 import CourseForm from './CourseForm'
 import toastr from 'toastr'
 
-class ManageCoursePage extends Component {
+export class ManageCoursePage extends Component {
     constructor(props,context){
         super(props,context)
 
@@ -31,9 +31,21 @@ class ManageCoursePage extends Component {
         course[field] =event.target.value
         return this.setState({course:course})
     }
+    courseFormIsValid(){
+        let formisValid = true
+        let errors = {}
+        if(this.state.course.title.length<5){
+            errors.title = 'Title must be at least 5 characters.'
+            formisValid = false
+        }
+        this.setState({errors:errors})
+        return formisValid
+    }
 
     onSaveHandler(e){
         e.preventDefault()
+        if(!this.courseFormIsValid()) return
+
         this.setState({saving:true})
         this.props.actions.saveCourse(this.state.course)
         .then(() => this.redirect())
