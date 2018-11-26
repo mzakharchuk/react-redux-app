@@ -28,3 +28,8 @@
 - update configuration for test `enzyme`
 - add validation for form
 - configured webpack for production version
+
+> day 5 (26.11.2018)
+- add action and reducers for login
+- add logout functionality
+- use `localStorage` for keep user data

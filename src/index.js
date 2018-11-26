@@ -16,6 +16,9 @@ import configureStore from './store/configureStore'
 import {Provider} from 'react-redux'
 import createHistory from 'history/createBrowserHistory'
 
+import { configureFakeBackend } from './api/fake-backend';
+configureFakeBackend();
+
 const store = configureStore()
 
 class Index extends Component {

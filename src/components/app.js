@@ -6,7 +6,6 @@ import AboutPage from './about/aboutPage'
 import PageNotFound from './notFound/PageNotFound'
 import ProtectedHome from './secure/protectedHome'
 import Login from './secure/Login'
-import Logout from './secure/Logout'
 import CoursePage from './course/CoursePage'
 import ManageCoursePage from './course/ManageCoursePage'
 
@@ -28,7 +27,6 @@ class App extends Component {
                   
                     <PrivateRoute path="/private" component={ProtectedHome}/>
                     <Route path="/login" component={Login}/>
-                    <Route path="/logout" component={Logout}/>
 
                     <Route component={PageNotFound}/>
                 </Switch>

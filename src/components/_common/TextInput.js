@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextInput = ({name,label,value,onChange,error,placeholder}) =>{
+const TextInput = ({name,label,value,onChange,error,placeholder,password = false}) =>{
     let wrapperClass = 'form-group'
     if(error && error.length>0)
         wrapperClass += ' '+ 'has-error'
@@ -10,7 +10,7 @@ const TextInput = ({name,label,value,onChange,error,placeholder}) =>{
             <label htmlFor={name}>{label}</label>
             <div className="field">
                 <input
-                    type="text"
+                    type={password?'password':'text'}
                     name={name}
                     className="form-control"
                     placeholder={placeholder}
