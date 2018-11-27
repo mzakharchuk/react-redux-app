@@ -24,12 +24,16 @@
 - add `toastr` for display notification and error handing
 - add unit tests with `mocha`,`enzime` and `expect`
 
-> day 5 (23.11.2018)
+> Day 5 (23.11.2018)
 - update configuration for test `enzyme`
 - add validation for form
 - configured webpack for production version
 
-> day 5 (26.11.2018)
+> Day 6 (26.11.2018)
 - add action and reducers for login
 - add logout functionality
 - use `localStorage` for keep user data
+
+> Day 7 (27.11.2018)
+- add register form
+- add mock backend for registration and authorization users

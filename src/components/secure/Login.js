@@ -1,7 +1,7 @@
 import React, { Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as loginAction from '../../_actions/loginAction'
 import TextInput from '../_common/TextInput'
 import toastr from 'toastr'
@@ -25,8 +25,13 @@ class Login extends Component {
 
     LoginHandler (e) {
         e.preventDefault()
-        this.props.actions.signIn(this.state.user).then(() => 
+        this.props.actions.signIn(this.state.user)
+        .then(() => 
             this.redirect())
+        .catch(error=>
+            toastr.error(error)
+            )    
+
     }
     redirect(){
         this.setState({saving:false})
@@ -35,10 +40,6 @@ class Login extends Component {
     }
 
     render () {
-        // const {target} = this.props.location.state || {target:{pathname:'/private'}}
-        // if(this.props.user.loggedIn){
-        //     return <Redirect to={target}/>
-        // }
         return (
             <div className="jumbotron">
              <h1>Sign in</h1>
@@ -56,6 +57,7 @@ class Login extends Component {
                     />
 
                 <input type="submit" className='btn btn-primary' value="Login" onClick={this.LoginHandler}/>
+                <Link to='/register' className='a-left'>Register</Link>
              </form>
              
         </div>)
