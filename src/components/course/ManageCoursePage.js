@@ -25,8 +25,8 @@ export class ManageCoursePage extends Component {
         }
     }
 
-    onChangeHandler(e){
-        const field = e.target.name
+    onChangeHandler(event){
+        const field = event.target.name
         return this.setState({course:{
             ...this.state.course,
             [field]:event.target.value

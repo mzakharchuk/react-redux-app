@@ -8,8 +8,6 @@ class Header  extends React.Component {
                 {' | '}
                 <NavLink to="/courses" className="btn" activeClassName="active">Courses</NavLink>
                 {' | '} 
-                <NavLink to="/private" className="btn" activeClassName="active">private</NavLink>
-                {' | '}
                 <NavLink to="/login" className="btn" activeClassName="active">login</NavLink>
                 {' | '}
                 <NavLink to="/about" className="btn" activeClassName="active">About</NavLink>

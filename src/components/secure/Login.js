@@ -18,9 +18,9 @@ class Login extends Component {
     }
     onChangeHandler(e){
         const field = e.target.name
-        let user = this.state.user
-        user[field] =event.target.value
-        return this.setState({user:user})
+        return this.setState({user:{
+                ...this.state.user,
+                [field]:event.target.value }})
     }
 
     LoginHandler (e) {
@@ -36,7 +36,7 @@ class Login extends Component {
     redirect(){
         this.setState({saving:false})
         toastr.success("You are signin")
-        this.props.history.push('/private')
+        this.props.history.push('/')
     }
 
     render () {

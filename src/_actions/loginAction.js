@@ -15,12 +15,13 @@ export function signIn({login,password}){
             dispatch(loginSuccess(user))
             localStorage.setItem('user', JSON.stringify(user));
         }).catch(error=>{
+            dispatch(loginFaild(error))
             throw(error)
         })
      }
 
     function loginSuccess(user){ return { type:types.USER_LOGIN_SUCCESS, user } }
-    function loginSuccess(user){ return { type:types.USER_LOGIN_FAILD, user } }
+    function loginFaild(error){ return { type:types.USER_LOGIN_FAILD, error } }
 }
 
 export function  singOut(){

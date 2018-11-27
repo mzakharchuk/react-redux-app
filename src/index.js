@@ -1,7 +1,7 @@
 import "@babel/polyfill"
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter} from 'react-router-dom';
+import { Router} from 'react-router-dom';
 
 import App from './components/app'
 import './styles/styles.css'
@@ -14,7 +14,7 @@ import { loadAuthors } from "./_actions/authorActions";
 
 import configureStore from './store/configureStore'
 import {Provider} from 'react-redux'
-import createHistory from 'history/createBrowserHistory'
+import {history} from './_helpers'
 
 import { configureFakeBackend } from './_helpers/fake-backend';
 configureFakeBackend();
@@ -32,9 +32,9 @@ class Index extends Component {
     render(){
         return( 
             <Provider store={store}>
-                <BrowserRouter>
+                 <Router history={history}>
                     <App/>
-                </BrowserRouter>
+                </Router>
         </Provider>
         )
     }   

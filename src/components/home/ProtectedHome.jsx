@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as loginAction from '../../_actions/loginAction'
 import * as userActions from '../../_actions/userActions'
-import { withRouter } from 'react-router-dom'
+import { history } from '../../_helpers'
 
 class ProtectedHome extends Component {
     constructor(props){
@@ -23,7 +23,7 @@ class ProtectedHome extends Component {
 
     LogoutHandler(e){
         this.props.actions.singOut()
-        this.props.history.push('/login')
+        history.push('/login')
     }
     render(){
         return(
@@ -57,4 +57,4 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(ProtectedHome))
+export default connect(mapStateToProps,mapDispatchToProps)(ProtectedHome)
