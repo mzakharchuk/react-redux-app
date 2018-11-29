@@ -37,3 +37,8 @@
 > Day 7 (27.11.2018)
 - add register form
 - add mock backend for registration and authorization users
+- add browse history to router
+- add extension dev tools for redux
+
+> Day 8 (29.11.2018)
+- add eslint and DuplicatePackage Plugin

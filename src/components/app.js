@@ -16,7 +16,6 @@ import Header from './_common/Header'
 import {history} from '../_helpers'
 
 class App extends Component {
-
     render(){
         return <div className="container-fluid">
             {this.props.isLoggin?<Header/>:null}
@@ -27,8 +26,7 @@ class App extends Component {
                     <Route path="/courses" component={CoursePage}/>
                     <Route exact path="/course" component={ManageCoursePage}/>
                     <Route path='/course/:id' component={ManageCoursePage}/>
-                  
-                  
+
                     <Route path="/login" component={Login}/>
                     <Route path="/register" component={RegisterPage}/>
 
@@ -36,7 +34,7 @@ class App extends Component {
                 </Switch>
                 </Router>
         </div>
-    }   
+    }
 }
 function mapStateToProps(state){
     const {loggedIn} = state.authentication

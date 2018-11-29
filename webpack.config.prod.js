@@ -2,9 +2,10 @@ const path = require('path')
 const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
+const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin")
 
 const GLOBAL = {
     'process.env.NODE_ENV':JSON.stringify('production')
@@ -57,6 +58,7 @@ module.exports = {
     plugins:[
         new CleanWebpackPlugin(['dist']),
         new CompressionPlugin(),
+        new DuplicatePackageCheckerPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new MiniCssExtractPlugin({
