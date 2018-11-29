@@ -40,5 +40,9 @@
 - add browse history to router
 - add extension dev tools for redux
 
-> Day 8 (29.11.2018)
+> Day 8 (28.11.2018)
 - add eslint and DuplicatePackage Plugin
+
+> Day 9 (29.11.2018)
+- add opportunity delete registered users
+- add indicator loading
