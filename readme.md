@@ -1,12 +1,12 @@
 # React + redux + webpack 4
 
 install packages
-```json
+```javascript
   npm install
 ```
 
 start
-```json
+```javascript
   npm run start
 ```
 below you can see a bit notation about connection `React-Redux`
