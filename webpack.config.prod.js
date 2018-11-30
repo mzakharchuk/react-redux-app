@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin")
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const GLOBAL = {
     'process.env.NODE_ENV':JSON.stringify('production')
@@ -13,15 +13,13 @@ const GLOBAL = {
 module.exports = {
     entry:{
         vendor:[
-            '@babel/polyfill',
             'react',
             'react-dom'
         ],
+        polyfill:'@babel/polyfill',
         app: './src/index.js'
     },
     output:{
-        path: path.join(__dirname, 'dist'),
-        publicPath: '/dist/',
         filename: "[name].js"
     },
     devtool:"source-map",
@@ -60,20 +58,18 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-          new UglifyJsPlugin()
-        ],
-        splitChunks:{
-            cacheGroups: {
-                vendors: {
-                  filename: 'vendor.js'
-                }
-              }
-        }
+            new UglifyJsPlugin({
+              cache: true,
+              parallel: true,
+              sourceMap: false,
+              extractComments: true
+            }),
+            new OptimizeCSSAssetsPlugin({})
+          ]
     },
     plugins:[
         new CleanWebpackPlugin(['dist']),
         new CompressionPlugin(),
-        new DuplicatePackageCheckerPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new MiniCssExtractPlugin({
@@ -82,8 +78,8 @@ module.exports = {
           }),
         new htmlWebpackPlugin(
             {
-                template: path.join(__dirname,'/src/index.html'),
-                filename: "./index.html"
+                template:'./src/index.html',
+                filename: "index.html"
             }
         )
       

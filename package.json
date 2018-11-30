@@ -2,6 +2,7 @@
     "name": "react-redux-app",
     "version": "1.0.0",
     "description": "using React",
+    "private": true,
     "author": "Maksym Zakharchuk",
     "homepage": "https://mzakharchuk.github.io/react-redux-app/",
     "scripts": {
@@ -13,7 +14,7 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/mzakharchuk/react-redux-app.git"
-      },
+    },
     "dependencies": {
         "@babel/polyfill": "^7.0.0",
         "bootstrap": "^4.1.3",
@@ -48,6 +49,7 @@
         "jsdom": "^13.0.0",
         "mini-css-extract-plugin": "^0.4.5",
         "mocha": "^5.2.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
         "postcss-loader": "^3.0.0",
         "prop-types": "^15.6.2",
         "react-addons-test-utils": "^15.6.2",
