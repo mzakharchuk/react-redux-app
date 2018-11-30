@@ -11,11 +11,18 @@ const GLOBAL = {
     'process.env.NODE_ENV':JSON.stringify('production')
 }
 module.exports = {
-    entry: './src/index.js',
+    entry:{
+        vendor:[
+            '@babel/polyfill',
+            'react',
+            'react-dom'
+        ],
+        app: './src/index.js'
+    },
     output:{
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
-        filename: "bundle.js"
+        filename: "[name].js"
     },
     devtool:"source-map",
     devServer: {
@@ -35,7 +42,8 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader' 
+                    'css-loader',
+                    'postcss-loader' 
                     ]
               },
               {
@@ -53,7 +61,14 @@ module.exports = {
     optimization: {
         minimizer: [
           new UglifyJsPlugin()
-        ]
+        ],
+        splitChunks:{
+            cacheGroups: {
+                vendors: {
+                  filename: 'vendor.js'
+                }
+              }
+        }
     },
     plugins:[
         new CleanWebpackPlugin(['dist']),
@@ -71,5 +86,6 @@ module.exports = {
                 filename: "./index.html"
             }
         )
+      
     ]
 }
