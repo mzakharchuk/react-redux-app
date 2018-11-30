@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "using React",
     "author": "Maksym Zakharchuk",
+    "homepage": "https://mzakharchuk.github.io/react-redux-app/",
     "scripts": {
         "predev": "webpack --mode development",
         "dev": "webpack-dev-server --hot --open --mode development ",
