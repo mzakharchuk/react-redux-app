@@ -47,5 +47,6 @@
 - add opportunity delete registered users
 - add indicator loading
 
-> Day (30.11.2018)
+> Day 10 (30.11.2018)
 - add postcss autoprefixer
+- add travis

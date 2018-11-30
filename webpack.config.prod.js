@@ -20,7 +20,7 @@ module.exports = {
         app: './src/index.js'
     },
     output:{
-        path: path.resolve(__dirname, './dist'),
+        path: path.join(__dirname, 'dist'),
         publicPath: '/dist/',
         filename: "[name].js"
     },
