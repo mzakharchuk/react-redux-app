@@ -9,6 +9,7 @@ import Login from './secure/Login'
 import CoursePage from './course/CoursePage'
 import ManageCoursePage from './course/ManageCoursePage'
 import RegisterPage from './register/RegisterPage'
+import ChatPage from './message/ChatPage'
 
 import PrivateRoute from './secure/PrivateRoute'
 
@@ -22,10 +23,12 @@ class App extends Component {
             <Router history={history}>
                 <Switch>
                     <PrivateRoute exact path="/" component={ProtectedHome}/>
+         
                     <Route path="/about" component={AboutPage}/>
                     <Route path="/courses" component={CoursePage}/>
                     <Route exact path="/course" component={ManageCoursePage}/>
                     <Route path='/course/:id' component={ManageCoursePage}/>
+                    <PrivateRoute exact path="/chat" component={ChatPage}/>
 
                     <Route path="/login" component={Login}/>
                     <Route path="/register" component={RegisterPage}/>

@@ -190,3 +190,5 @@ Our setup is now complete. We can run our tests with `npm run test` by adding th
         "test": "mocha --compilers js:@babel/register --require ./src/test/helpers/browser.js --require ./src/test/helpers/dom.js --recursive \"./src/test/**/*.spec.js*\""
     }
 ```
+
+## Simple send Message with `CHATKIT`

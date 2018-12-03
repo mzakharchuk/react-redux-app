@@ -50,3 +50,6 @@
 > Day 10 (30.11.2018)
 - add postcss autoprefixer
 - add travis
+
+> Day 11 (03.11.2018)
+- add simple chat with `Chatkit` API

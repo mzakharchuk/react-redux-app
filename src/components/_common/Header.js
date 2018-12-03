@@ -10,6 +10,8 @@ class Header  extends React.Component {
                 {' | '} 
                 <NavLink to="/login" className="btn" activeClassName="active">login</NavLink>
                 {' | '}
+                <NavLink exact to="/chat" className="btn" activeClassName="active">message</NavLink> 
+                {' | '}
                 <NavLink to="/about" className="btn" activeClassName="active">About</NavLink>
             </div>
         )
