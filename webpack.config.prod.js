@@ -68,6 +68,7 @@ module.exports = {
           ]
     },
     plugins:[
+        new webpack.DefinePlugin(GLOBAL),
         new CleanWebpackPlugin(['dist']),
         new CompressionPlugin(),
         new webpack.HotModuleReplacementPlugin(),
