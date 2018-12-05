@@ -9,7 +9,6 @@
         "predev": "webpack --mode development",
         "dev": "webpack-dev-server --hot --open --mode development ",
         "build": "cross-env cross-env NODE_ENV=production webpack --config webpack.config.prod.js --mode production",
-        "postbuild": "node tools/distServer.js",
         "test": "mocha --compilers js:@babel/register --require ./src/test/helpers/browser.js --require ./src/test/helpers/dom.js --recursive \"./src/test/**/*.spec.js*\""
     },
     "repository": {
