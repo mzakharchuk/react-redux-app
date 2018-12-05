@@ -33,7 +33,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new htmlWebpackPlugin(
             {
-                template: path.join(__dirname,'/src/index.html'),
+                template: './src/index.html',
                 filename: "./index.html"
             }
         )
